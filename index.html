@@ -13,54 +13,87 @@
                     case 3: return "scissors";
                 }
             }
-            function round(playerSelection, computerSelection) {
-                let result, status;
-                playerSelection=playerSelection.toLowerCase();
-                if (playerSelection=="rock") {
-                    if (computerSelection=="paper")
-                        result="Lose";
-                    else if (computerSelection=="scissors")
-                            result="Win";
-                        else
-                            result="Draw";
-                }
-                else if (playerSelection=="paper") {
-                    if (computerSelection=="rock")
-                        result="Win";
-                    else if (computerSelection=="scissors")
-                            result="Lose";
-                         else
-                            result="Draw";
-                }
-                    else {
-                        if (computerSelection=="rock")
-                            result="Lose";
-                        else if (computerSelection=="paper")
-                                result="Win";
-                             else
-                                result="Draw";
-                    }
-                switch (result) {
-                    case "Win": status="beats";
-                                break;
-                    case "Lose": status="loses to";
-                                 break;
-                    default: status="is equal to";
-                }
-                console.log ("You " + result + "! " + playerSelection
-                 + " " + status + " " + computerSelection + ".");
-                return (result=="Win") ? 1 : (result=="Draw") ? 0 : -1;
+            function round(playerSelection, computerSelection, playerScore, computerScore) {
+                if (playerSelection=="" || playerSelection==null) {
+			console.log("There has been an error in the input.");
+			return 0;
+		}
+		else {
+		    playerSelection=playerSelection.toLowerCase();
+		    if (playerSelection==computerSelection) {
+			console.log("It's a tie.");
+			return 0;
+		    }
+		    else if (playerSelection=="rock") {
+				if (computerSelection=="scissors"){
+				   console.log("You win!. Rock beats scissors");
+				   return 1;				
+				}
+				else {
+				   console.log("You lose. Paper beats rock");	
+				   return -1;		
+				}			
+			}
+			else if (playerSelection=="paper") {
+				if (computerSelection=="rock") {
+				   console.log("You win!. Paper beats rock");	
+			           return 1;			
+				}
+				else {
+			console.log("You lose. Scissors beats paper");	
+			return -1;		
+				}
+		}
+				else if (playerSelection=="scissors") {
+				if (computerSelection=="paper"){
+				console.log("You win!. Scissors beats paper");	
+				return 1;			
+				}
+				else {
+				console.log("You lose. Rock beats scissors");
+				return -1;			
+				}
+		}
+                		else {
+					console.log("There has been an error in the input.");
+					return 0;
+				}
+		}
             }
-            function game(){
-                let score=0;
-                score+=round(prompt("Your choice:"), computerPlay());
-                score+=round(prompt("Your choice:"), computerPlay());
-                score+=round(prompt("Your choice:"), computerPlay());
-                score+=round(prompt("Your choice:"), computerPlay());
-                score+=round(prompt("Your choice:"), computerPlay());
-                return (score>0) ? "You win!" : 
-                        (score==0) ? "You draw!":"You lose :(";
-            }
+            function game() {
+		let playerScore=0, computerScore=0, gameScore;
+		gameScore=round(window.prompt("Your choice:"), computerPlay());
+		if (gameScore==1)
+			playerScore++;
+		else if (gameScore==-1)
+			computerScore++;
+                gameScore=round(window.prompt("Your choice:"), computerPlay());
+		if (gameScore==1)
+			playerScore++;
+		else if (gameScore==-1)
+			computerScore++;
+                gameScore=round(window.prompt("Your choice:"), computerPlay());
+		if (gameScore==1)
+			playerScore++;
+		else if (gameScore==-1)
+			computerScore++;                
+		gameScore=round(window.prompt("Your choice:"), computerPlay());
+		if (gameScore==1)
+			playerScore++;
+		else if (gameScore==-1)
+			computerScore++;
+                gameScore=round(window.prompt("Your choice:"), computerPlay());
+		if (gameScore==1)
+			playerScore++;
+		else if (gameScore==-1)
+			computerScore++;
+                if (playerScore>computerScore) 
+			return "You Win!. Final score: " + playerScore + "-" + computerScore
+		else if (playerScore<computerScore)
+			return "You lose. Final score: " + playerScore + "-" + computerScore
+		     else
+			return "It's a tie. Final score: " + playerScore + "-" + computerScore
+		}
         </script>
     </body>
 </html>
