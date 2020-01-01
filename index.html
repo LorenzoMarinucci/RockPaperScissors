@@ -47,8 +47,19 @@
                                  break;
                     default: status="is equal to";
                 }
-                return ("You " + result + "! " + playerSelection
-                 + " " + status + " " + computerSelection + "."); 
+                console.log ("You " + result + "! " + playerSelection
+                 + " " + status + " " + computerSelection + ".");
+                return (result=="Win") ? 1 : (result=="Draw") ? 0 : -1;
+            }
+            function game(){
+                let score=0;
+                score+=round(prompt("Your choice:"), computerPlay());
+                score+=round(prompt("Your choice:"), computerPlay());
+                score+=round(prompt("Your choice:"), computerPlay());
+                score+=round(prompt("Your choice:"), computerPlay());
+                score+=round(prompt("Your choice:"), computerPlay());
+                return (score>0) ? "You win!" : 
+                        (score==0) ? "You draw!":"You lose :(";
             }
         </script>
     </body>
