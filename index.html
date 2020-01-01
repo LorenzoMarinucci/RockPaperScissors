@@ -13,6 +13,43 @@
                     case 2: return "scissors";
                 }
             }
+            function round(playerSelection, computerSelection) {
+                let result, status;
+                playerSelection=playerSelection.toLowerCase();
+                if (PlayerSelection=="rock") {
+                    if (computerSelection=="paper"
+                        result="Lose";
+                    else if (computerSelection=="scissors")
+                            result="Win";
+                        else
+                            result="Draw";
+                }
+                else if (playerSelection=="paper") {
+                    if (computerSelection=="rock")
+                        result="Win";
+                    else if (computerSelection=="scissors")
+                            result="Lose";
+                         else
+                            result="Draw";
+                }
+                    else {
+                        if (computerSelection=="rock")
+                            result="Lose";
+                        else if (computerSelection=="paper")
+                                result="Win";
+                             else
+                                result="Draw";
+                    }
+                switch (result) {
+                    case "Win": status="beats";
+                                break;
+                    case "Lose": status="loses to";
+                                 break;
+                    default: status="is equal to";
+                }
+                return ("You " + result + "! " + PlayerSelection
+                 + " " + status + " " + computerSelection + "."); 
+            }
         </script>
     </body>
 </html>
